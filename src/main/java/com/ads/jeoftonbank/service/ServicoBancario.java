@@ -6,6 +6,9 @@ import com.ads.jeoftonbank.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class ServicoBancario {
     @Autowired
@@ -36,4 +39,35 @@ public class ServicoBancario {
             return "Usuário não encontrado";
         }
     }
+
+    public Usuario criarUsuario(Usuario usuario) {
+        usuario.setAtivo(true);
+        return usuarioRepository.save(usuario);
+    }
+
+
+    public List<Usuario> listarUsuarios() {
+        return usuarioRepository.findAll().stream()
+                .filter(Usuario::isAtivo)
+                .collect(Collectors.toList());
+    }
+
+    public Usuario inativarUsuario(Long id) {
+        Usuario usuario = usuarioRepository.findById(id).orElse(null);
+        if (usuario != null){
+            usuario.setAtivo(false);
+            usuarioRepository.save(usuario);
+        }
+        return usuario;
+    }
+
+    public Usuario alterarStatusUsuario(Long id, Boolean novoStatus) {
+        Usuario usuario = usuarioRepository.findById(id).orElse(null);
+        if (usuario != null) {
+            usuario.setAtivo(novoStatus);
+            usuarioRepository.save(usuario);
+        }
+        return usuario;
+    }
+
 }

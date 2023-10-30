@@ -20,6 +20,8 @@ public class Usuario {
     @PositiveOrZero(message = "O saldo não pode ser negativo")
     private double saldo;
 
+    private boolean ativo;
+
     public Long getId() {
         return id;
     }
@@ -42,5 +44,13 @@ public class Usuario {
 
     public void setSaldo(double saldo) {
         this.saldo = saldo;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
 }
