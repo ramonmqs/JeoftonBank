@@ -1,0 +1,5 @@
+CREATE TABLE usuario (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    saldo DOUBLE NOT NULL
+);
