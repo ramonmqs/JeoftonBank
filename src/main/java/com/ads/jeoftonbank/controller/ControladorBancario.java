@@ -1,7 +1,6 @@
 package com.ads.jeoftonbank.controller;
 
 import com.ads.jeoftonbank.models.Compra;
-import com.ads.jeoftonbank.repository.UsuarioRepository;
 import com.ads.jeoftonbank.models.Usuario;
 import com.ads.jeoftonbank.service.ServicoBancario;
 import org.springframework.beans.factory.annotation.Autowired;
